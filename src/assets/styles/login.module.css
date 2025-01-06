@@ -1,0 +1,150 @@
+/* LoginPage */
+
+.loginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #eef6ff;
+    padding: 3rem 1rem;
+}
+
+.formContainer {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    color: #0077cc;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #0077cc;
+}
+
+.loginButton {
+    padding: 0.8rem;
+    background-color: #1c1c1d;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 1rem;
+    transition: all 0.5s;
+}
+
+.loginButton:hover {
+    background-color: #005fa3;
+}
+
+.footer {
+    margin-top: 1.5rem;
+}
+
+.footer p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.link {
+    color: #0077cc;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small devices (phones) */
+@media (max-width: 768px) {
+    .formContainer {
+        padding: 1.5rem;
+        width: 90%;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .input {
+        font-size: 0.9rem;
+    }
+
+    .loginButton {
+        font-size: 0.9rem;
+    }
+
+    .footer p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Medium devices (tablets) */
+@media (max-width: 1024px) {
+    .formContainer {
+        padding: 1.8rem;
+    }
+
+    .title {
+        font-size: 1.9rem;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+    }
+
+    .input {
+        font-size: 0.95rem;
+    }
+
+    .loginButton {
+        font-size: 0.95rem;
+    }
+}

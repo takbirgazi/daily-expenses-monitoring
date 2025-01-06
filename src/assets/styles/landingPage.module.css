@@ -1,0 +1,135 @@
+/* LandingPage */
+
+.landingPage {
+    text-align: center;
+}
+
+.hero {
+    padding: 8rem 3rem;
+    background-color: #eef6ff;
+    color: #1c1c1d;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.ctaButton {
+    padding: 0.8rem 2rem;
+    background-color: #1c1c1d;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.5s;
+    text-decoration: none;
+}
+
+.ctaButton:hover {
+    background-color: #005fa3;
+}
+
+.features,
+.about,
+.footer {
+    padding: 2rem 3rem;
+}
+
+.features h2,
+.about h2,
+.footer h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.featureList {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.feature {
+    flex: 1 1 30%;
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature p {
+    font-size: 1rem;
+}
+
+.footer {
+    background-color: #1c1c1d;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+.footer p {
+    margin: 0.5rem 0;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small devices (phones) */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .ctaButton {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .featureList {
+        flex-direction: column;
+    }
+
+    .feature {
+        flex: 1 1 100%;
+    }
+}
+
+/* Medium devices (tablets) */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .ctaButton {
+        padding: 0.7rem 1.8rem;
+        font-size: 1rem;
+    }
+
+    .featureList {
+        flex-wrap: wrap;
+    }
+
+    .feature {
+        flex: 1 1 45%;
+    }
+}
