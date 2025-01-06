@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Daily Expenses Monitoring
 
-## Getting Started
+## Overview
+Daily Expenses Monitoring is a web application that helps users input, manage, and track their daily expenses across various categories. With features like categorized summaries, spending limits, and detailed expense tracking, it provides a streamlined solution for financial management.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Expense Input
+- **Categorized Expenses**: Users can add expenses under predefined categories:
+  - Groceries
+  - Transportation
+  - Healthcare
+  - Utility
+  - Charity
+  - Miscellaneous
+- **Purpose Specification**: Each expense entry requires a purpose (e.g., "Weekly groceries").
+- **Automatic Timestamps**: The application records the date and time automatically when an expense is added.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Expense Management
+- **Multiple Entries**: Users can add multiple expenses per day.
+- **Secure Storage**: Expenses are stored securely in a MongoDB database.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Summary Page
+- **Daily Summaries**: Displays categorized summaries of expenses for each day.
+- **Total Calculations**: Shows total daily expenses under each date.
+- **Detailed Tooltips**: Hover over expense fields to view additional information about the purpose of the expense.
 
-## Learn More
+### Spending Limit
+- **Monthly Limit**: Users set a monthly spending limit upon starting the application.
+- **Category Limits**: Set individual spending limits for each category (e.g., Groceries: $200, Transportation: $50).
+- **Limit Alerts**: Prevents adding expenses that exceed set limits and alerts users when limits are reached.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technologies Used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Frontend
+- **Next.js**: Frontend Framework
+- **Redux Toolkit**: State Management
+- **Raw CSS**: Styled without CSS libraries
 
-## Deploy on Vercel
+### Backend
+- **Express.js**
+- **MongoDB**: Database
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Installation and Setup
+
+### Prerequisites
+- Node.js and npm installed on your machine.
+- MongoDB database set up and running.
+
+### Steps
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/takbirgazi/daily-expenses-monitoring.git
+   cd daily-expenses-monitoring
+   ```
+
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Environment Variables**:
+   - Create a `.env` file.
+   - Add the following environment variables:
+     ```env
+     MONGO_URI
+     PORT=5000
+     ```
+
+4. **Run the Application**:
+   - Run the command 
+     ```bash
+     npm run dev
+     ```
+
+5. **Access the Application**:
+   Open your browser and navigate to `http://localhost:3000`.
+
+---
+
+## API Endpoints
+
+### Base URL: `http://localhost:3000/api`
+
+#### Expense Management
+
+| Method | Endpoint         | Description                 |
+|--------|------------------|-----------------------------|
+| POST   | `/tasks`         | Add a new expense.          |
+| GET    | `/tasks`         | Retrieve all expenses.      |
+| PUT    | `/tasks/:id`     | Update an existing expense. |
+| DELETE | `/tasks/:id`     | Delete an expense.          |
+ 
+---
+
+## Contributing
+We welcome contributions to improve this project. Please follow the steps below:
+1. Fork the repository.
+2. Create a new branch (`feature/your-feature-name`).
+3. Commit your changes.
+4. Push your branch and create a pull request.
+
+---
+
+## Contact
+For any questions or support, feel free to reach out to the project maintainer:
+- **Name**: Md. Takbir Gazi
+- **Email**: takbirgazibd@gmail.com
+- **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/takbirgazi)
