@@ -1,4 +1,4 @@
-/* SignUpPage*/
+/* Get Started Page*/
 
 .signupPage {
     display: flex;
@@ -6,7 +6,7 @@
     align-items: center;
     min-height: 100vh;
     background-color: #eef6ff;
-    padding: 3rem 1rem;
+    padding: 1rem;
 }
 
 .formContainer {
@@ -31,35 +31,13 @@
     margin-bottom: 2rem;
 }
 
-.signupForm {
+.socialBtnCont {
     display: flex;
     flex-direction: column;
-}
-
-.formGroup {
-    margin-bottom: 1.5rem;
-    text-align: left;
-}
-
-.label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    color: #333;
-}
-
-.input {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    box-sizing: border-box;
-}
-
-.input:focus {
-    outline: none;
-    border-color: #0077cc;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
 }
 
 .signupButton {
@@ -67,34 +45,22 @@
     background-color: #1c1c1d;
     color: #fff;
     border: none;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
     border-radius: 5px;
     margin-top: 1rem;
     transition: all 0.5s;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
 
 .signupButton:hover {
     background-color: #005fa3;
 }
 
-.footer {
-    margin-top: 1.5rem;
-}
-
-.footer p {
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.link {
-    color: #0077cc;
-    text-decoration: none;
-}
-
-.link:hover {
-    text-decoration: underline;
-}
 
 /* Media Queries for Responsiveness */
 
@@ -113,17 +79,24 @@
         font-size: 0.9rem;
     }
 
-    .input {
-        font-size: 0.9rem;
+    .socialBtnCont {
+
+        flex-direction: row;
+    }
+
+    .btIcon {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .btnText {
+        display: none;
     }
 
     .signupButton {
         font-size: 0.9rem;
     }
 
-    .footer p {
-        font-size: 0.8rem;
-    }
 }
 
 /* Medium devices (tablets) */
@@ -137,10 +110,6 @@
     }
 
     .subtitle {
-        font-size: 0.95rem;
-    }
-
-    .input {
         font-size: 0.95rem;
     }
 

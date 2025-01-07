@@ -1,12 +1,12 @@
-/* LoginPage */
+/* AddExpensesPage*/
 
-.loginPage {
+.addExpensesPage {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: #eef6ff;
-    padding: 3rem 1rem;
+    padding: 1rem;
 }
 
 .formContainer {
@@ -15,30 +15,23 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
-    text-align: center;
+    max-width: 500px;
 }
 
 .title {
     font-size: 2rem;
     color: #0077cc;
-    margin-bottom: 1rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
-.subtitle {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 2rem;
-}
-
-.loginForm {
+.expenseForm {
     display: flex;
     flex-direction: column;
 }
 
 .formGroup {
     margin-bottom: 1.5rem;
-    text-align: left;
 }
 
 .label {
@@ -48,7 +41,8 @@
     color: #333;
 }
 
-.input {
+.input,
+.select {
     width: 100%;
     padding: 0.8rem;
     border: 1px solid #ddd;
@@ -57,48 +51,28 @@
     box-sizing: border-box;
 }
 
-.input:focus {
+.input:focus,
+.select:focus {
     outline: none;
     border-color: #0077cc;
 }
 
-.loginButton {
+.addButton {
     padding: 0.8rem;
-    background-color: #1c1c1d;
+    background-color: #0077cc;
     color: #fff;
     border: none;
     font-size: 1rem;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: 1rem;
-    transition: all 0.5s;
 }
 
-.loginButton:hover {
+.addButton:hover {
     background-color: #005fa3;
-}
-
-.footer {
-    margin-top: 1.5rem;
-}
-
-.footer p {
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.link {
-    color: #0077cc;
-    text-decoration: none;
-}
-
-.link:hover {
-    text-decoration: underline;
 }
 
 /* Media Queries for Responsiveness */
 
-/* Small devices (phones) */
 @media (max-width: 768px) {
     .formContainer {
         padding: 1.5rem;
@@ -109,42 +83,12 @@
         font-size: 1.8rem;
     }
 
-    .subtitle {
+    .input,
+    .select {
         font-size: 0.9rem;
     }
 
-    .input {
+    .addButton {
         font-size: 0.9rem;
-    }
-
-    .loginButton {
-        font-size: 0.9rem;
-    }
-
-    .footer p {
-        font-size: 0.8rem;
-    }
-}
-
-/* Medium devices (tablets) */
-@media (max-width: 1024px) {
-    .formContainer {
-        padding: 1.8rem;
-    }
-
-    .title {
-        font-size: 1.9rem;
-    }
-
-    .subtitle {
-        font-size: 0.95rem;
-    }
-
-    .input {
-        font-size: 0.95rem;
-    }
-
-    .loginButton {
-        font-size: 0.95rem;
     }
 }

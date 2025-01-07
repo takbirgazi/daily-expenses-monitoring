@@ -1,3 +1,5 @@
+/* Header Component Style  */
+
 .header {
     background-color: #1c1c1d;
     color: #fff;
@@ -12,6 +14,8 @@
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
+    color: white;
+    text-decoration: none;
 }
 
 .logoSm {
@@ -20,6 +24,7 @@
 
 .nav {
     display: flex;
+    align-items: center;
     gap: 1rem;
 }
 
@@ -48,8 +53,14 @@
 
     .logoSm {
         display: block;
-        font-size: 1rem;
+        font-size: 1.1rem;
         font-weight: 900;
+        color: white;
+        text-decoration: none;
+    }
+
+    .btnIcon {
+        font-size: 1.5rem;
     }
 
     .logo {
@@ -62,11 +73,13 @@
 
     .navSm {
         display: flex;
+        align-items: center;
         gap: 15px;
     }
 
     .navSm a {
         color: white;
+        text-decoration: none;
     }
 }
 

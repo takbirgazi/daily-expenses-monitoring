@@ -18,7 +18,7 @@ export default function Home() {
           Stay in control of your spending with our simple and efficient expense
           tracking app.
         </p>
-        <Link href="/signup" className={styles.ctaButton}> Get Started</Link>
+        <Link href="/getstarted" className={styles.ctaButton}> Get Started</Link>
       </section>
 
       <section id="features" className={styles.features}>

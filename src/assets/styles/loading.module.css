@@ -1,12 +1,14 @@
+/* Loading Page  */
+
 .loading {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #1c1c1d;
+    background-color: #eef6ff;
 }
 
 .loadingText {
     text-align: center;
-    color: white;
+    color: #1c1c1d;
 }
