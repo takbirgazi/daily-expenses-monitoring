@@ -2,10 +2,15 @@
 
 import styles from "@/assets/styles/landingPage.module.css";
 import Header from "@/components/Header/Header";
-import Link from "next/link";
 import { useSelector } from "react-redux";
+import { signIn, useSession } from "next-auth/react"
+import { redirect } from "next/navigation";
 
 export default function Home() {
+  const { data: session } = useSession();
+  if (session?.user) {
+    redirect("/addexpenses")
+  }
   const todo = useSelector(state => state?.todo);
   console.log(todo)
   return (
@@ -18,7 +23,7 @@ export default function Home() {
           Stay in control of your spending with our simple and efficient expense
           tracking app.
         </p>
-        <Link href="/getstarted" className={styles.ctaButton}> Get Started</Link>
+        <button onClick={() => signIn('google')} className={styles.ctaButton}> Get Started</button>
       </section>
 
       <section id="features" className={styles.features}>

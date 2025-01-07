@@ -2,8 +2,16 @@
 import Header from "@/components/Header/Header";
 import { useState } from 'react';
 import styles from '@/assets/styles/setlimit.module.css';
+import { useSession } from "next-auth/react"
+import { redirect } from "next/navigation";
 
 const SetExpensesLimit = () => {
+    const { data: session } = useSession();
+    // User Not Exist
+    if (session == null) {
+        redirect("/")
+    }
+
     const [limits, setLimits] = useState({
         Groceries: 0,
         Transportation: 0,

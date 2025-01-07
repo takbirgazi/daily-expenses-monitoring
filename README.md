@@ -41,6 +41,7 @@ Daily Expenses Monitoring is a web application that helps users input, manage, a
 - **Redux Toolkit**: State Management
 - **Raw CSS**: Styled without CSS libraries
 - **React Icon**: For awesome icons
+- **Next Auth**: For Authentication
 
 ### Backend
 - **Express.js**
@@ -71,8 +72,10 @@ Daily Expenses Monitoring is a web application that helps users input, manage, a
    - Create a `.env` file.
    - Add the following environment variables:
      ```env
-     MONGO_URI
      PORT=3000
+     MONGO_URI=
+     GOOGLE_CLIENT_ID=
+     GOOGLE_CLIENT_SECRET=
      ```
 
 4. **Run the Application**:

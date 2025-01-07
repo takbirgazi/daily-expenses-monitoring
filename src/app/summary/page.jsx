@@ -1,9 +1,16 @@
 "use client"
 import Header from "@/components/Header/Header";
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from '@/assets/styles/summary.module.css';
+import { useSession } from "next-auth/react"
+import { redirect } from "next/navigation";
 
 const SummaryPage = () => {
+    const { data: session } = useSession();
+    // User Not Exist
+    if (session == null) {
+        redirect("/");
+    }
     const [expenses, setExpenses] = useState([
         {
             date: '2025-01-01',
