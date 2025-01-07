@@ -7,7 +7,6 @@ const roboto = Roboto({
   subsets: ['latin'],
 })
 
-
 export const metadata = {
   title: "DEM",
   description: "Daily Expenses Monitoring",

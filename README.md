@@ -76,6 +76,7 @@ Daily Expenses Monitoring is a web application that helps users input, manage, a
      MONGO_URI=
      GOOGLE_CLIENT_ID=
      GOOGLE_CLIENT_SECRET=
+     NEXTAUTH_SECRET=
      ```
 
 4. **Run the Application**:
@@ -99,8 +100,8 @@ Daily Expenses Monitoring is a web application that helps users input, manage, a
 |--------|------------------|-----------------------------|
 | POST   | `/tasks`         | Add a new expense.          |
 | GET    | `/tasks`         | Retrieve all expenses.      |
-| PUT    | `/tasks/:id`     | Update an existing expense. |
-| DELETE | `/tasks/:id`     | Delete an expense.          |
+| PUT    | `/tasks/:email`     | Update an existing expense. |
+| DELETE | `/tasks/:email`     | Delete an expense.          |
  
 ---
 

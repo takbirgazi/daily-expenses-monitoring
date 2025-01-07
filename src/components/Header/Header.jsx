@@ -25,7 +25,7 @@ const Header = () => {
                             <Link href="/addexpenses">Add Expenses</Link>
                             <Link href="/summary">Expenses Summary</Link>
                             <Link href="/setlimit">Set Expenses Limit</Link>
-                            <div onClick={logoutHandler} title={session?.user?.name} className={styles.ctaButton}> Log Out</div>
+                            <div onClick={logoutHandler} data-tooltip={session?.user?.name} className={`${styles.ctaButton} ${styles.tooltip}`}> Log Out</div>
                         </> : <div onClick={() => signIn('google')} className={styles.ctaButton}> Join With Google</div>
                 }
             </nav>
@@ -36,7 +36,7 @@ const Header = () => {
                             <Link href="/addexpenses"> <MdAddCard className={styles.btnIcon} /></Link>
                             <Link href="/summary"> <FaListUl className={styles.btnIcon} /> </Link>
                             <Link href="/setlimit"> <MdOutlineSystemUpdateAlt className={styles.btnIcon} /></Link>
-                            <div onClick={logoutHandler} title={session?.user?.name}><TbLogout className={styles.btnIcon} /></div>
+                            <div onClick={logoutHandler} data-tooltip={session?.user?.name}><TbLogout className={`${styles.btnIcon} ${styles.tooltip}`} /></div>
                         </> : <div onClick={() => signIn('google')} className={styles.ctaButton}> <FcGoogle className={styles.btnIcon} /></div>
                 }
             </nav>

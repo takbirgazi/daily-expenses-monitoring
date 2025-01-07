@@ -2,7 +2,6 @@
 
 import styles from "@/assets/styles/landingPage.module.css";
 import Header from "@/components/Header/Header";
-import { useSelector } from "react-redux";
 import { signIn, useSession } from "next-auth/react"
 import { redirect } from "next/navigation";
 
@@ -11,8 +10,6 @@ export default function Home() {
   if (session?.user) {
     redirect("/addexpenses")
   }
-  const todo = useSelector(state => state?.todo);
-  console.log(todo)
   return (
     <div className={styles.landingPage}>
       {/* This is Leader and Navbar  */}

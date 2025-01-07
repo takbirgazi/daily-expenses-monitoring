@@ -30,6 +30,12 @@
     flex-direction: column;
 }
 
+.updateMsg {
+    color: green;
+    font-size: 14;
+    font-weight: bold;
+}
+
 .formGroup {
     margin-bottom: 1.5rem;
 }

@@ -1,9 +1,11 @@
 "use client"
 import Header from "@/components/Header/Header";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from '@/assets/styles/summary.module.css';
 import { useSession } from "next-auth/react"
 import { redirect } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "@/lib/features/addUser/addUserSlice";
 
 const SummaryPage = () => {
     const { data: session } = useSession();
@@ -11,6 +13,15 @@ const SummaryPage = () => {
     if (session == null) {
         redirect("/");
     }
+
+    // Get Data using Redux 
+    const users = useSelector(state => state?.users);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getUsers())
+    }, [dispatch])
+    console.log(users?.users)
+
     const [expenses, setExpenses] = useState([
         {
             date: '2025-01-01',

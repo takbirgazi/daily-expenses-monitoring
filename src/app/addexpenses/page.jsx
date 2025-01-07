@@ -1,43 +1,38 @@
 "use client"
 
 import Header from "@/components/Header/Header";
-import { useState } from 'react';
 import styles from '@/assets/styles/addexpenses.module.css';
 import { useSession } from "next-auth/react"
 import { redirect } from "next/navigation";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { postExpenses } from "@/lib/features/expenses/expensesSlice";
 
 const AddExpensesPage = () => {
+    const [updateMsg, setUpdateMsg] = useState("");
+    // const { expenses } = useSelector(state => state.expenses);
+    const dispatch = useDispatch();
+
     const { data: session } = useSession();
     // User Not Exist
     if (session == null) {
         redirect("/")
     }
-
-    const [expense, setExpense] = useState({
-        amount: '',
-        category: '',
-        purpose: '',
-        date: '',
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setExpense((prevExpense) => ({
-            ...prevExpense,
-            [name]: value,
-        }));
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Expense Submitted:', expense);
-        // Add expense to the database or state here
-        setExpense({
-            amount: '',
-            category: '',
-            purpose: '',
-            date: '',
-        });
+        const form = e.target;
+        const amount = form.amount.value;
+        const category = form.category.value;
+        const purpose = form.purpose.value;
+        const dateOb = new Date();
+        const date = `${(String(dateOb.getDate()).padStart(2, "0"))}/${(String(dateOb.getMonth() + 1).padStart(2, "0"))}/${dateOb.getFullYear()}`;
+        const email = session?.user?.email
+        const body = { email, date, amount, category, purpose }
+        dispatch(postExpenses(body))
+            .then(async () => {
+                await setUpdateMsg("Expenses Inserted!");
+                form.reset()
+            })
     };
 
     return (
@@ -46,6 +41,7 @@ const AddExpensesPage = () => {
             <div className={styles.addExpensesPage}>
                 <div className={styles.formContainer}>
                     <h1 className={styles.title}>Add New Expense</h1>
+                    <div className={styles.updateMsg}>{updateMsg && updateMsg}</div>
                     <form className={styles.expenseForm} onSubmit={handleSubmit}>
                         <div className={styles.formGroup}>
                             <label htmlFor="amount" className={styles.label}>
@@ -57,8 +53,6 @@ const AddExpensesPage = () => {
                                 name="amount"
                                 placeholder="Enter amount"
                                 className={styles.input}
-                                value={expense.amount}
-                                onChange={handleChange}
                                 required
                             />
                         </div>
@@ -71,19 +65,17 @@ const AddExpensesPage = () => {
                                 id="category"
                                 name="category"
                                 className={styles.select}
-                                value={expense.category}
-                                onChange={handleChange}
                                 required
                             >
                                 <option value="" disabled>
                                     Select category
                                 </option>
+                                <option value="Miscellaneous">Miscellaneous</option>
                                 <option value="Groceries">Groceries</option>
                                 <option value="Transportation">Transportation</option>
                                 <option value="Healthcare">Healthcare</option>
                                 <option value="Utility">Utility</option>
                                 <option value="Charity">Charity</option>
-                                <option value="Miscellaneous">Miscellaneous</option>
                             </select>
                         </div>
 
@@ -97,27 +89,9 @@ const AddExpensesPage = () => {
                                 name="purpose"
                                 placeholder="Enter purpose"
                                 className={styles.input}
-                                value={expense.purpose}
-                                onChange={handleChange}
                                 required
                             />
                         </div>
-
-                        <div className={styles.formGroup}>
-                            <label htmlFor="date" className={styles.label}>
-                                Date
-                            </label>
-                            <input
-                                type="date"
-                                id="date"
-                                name="date"
-                                className={styles.input}
-                                value={expense.date}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
-
                         <button type="submit" className={styles.addButton}>
                             Add Expense
                         </button>
