@@ -17,11 +17,10 @@ const SummaryPage = () => {
     // Get Data using Redux 
     const monthlyExpenses = useSelector(state => state?.expensesData);
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getExpenses())
-    }, [dispatch])
 
-    console.log(monthlyExpenses?.expenses)
+    useEffect(() => {
+        dispatch(getExpenses(session?.user?.email))
+    }, [dispatch])
 
     const calculateDailyTotal = (categories) =>
         categories.reduce((acc, category) => acc + parseInt(category.amount), 0);

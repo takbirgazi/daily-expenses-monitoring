@@ -7,8 +7,8 @@ const initialState = {
     error: null
 }
 
-export const getExpenses = createAsyncThunk("expenses/getExpenses", async () => {
-    const users = await fetch("api/expenses")
+export const getExpenses = createAsyncThunk("expenses/getExpenses", async (email) => {
+    const users = await fetch(`api/expenses?email=${encodeURIComponent(email)}`)
     const result = users.json();
     return result;
 })
