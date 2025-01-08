@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react"
 import { redirect } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { getExpenses } from "@/lib/features/expenses/getExpensesSlice";
+import { getExpensesLimit } from "@/lib/features/expensesLimit/getExpensesLimitSlice";
 
 const SummaryPage = () => {
     const { data: session } = useSession();
@@ -16,12 +17,16 @@ const SummaryPage = () => {
 
     // Get Data using Redux 
     const monthlyExpenses = useSelector(state => state?.expensesData);
+    const monthlyExpensesLimit = useSelector(state => state?.ExpensesLimitData);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getExpenses(session?.user?.email))
-    }, [dispatch])
+        dispatch(getExpenses(session?.user?.email));
+        // dispatch(getExpensesLimit(session?.user?.email));
+        dispatch(getExpensesLimit());
 
+    }, [dispatch])
+    console.log(monthlyExpensesLimit)
     const calculateDailyTotal = (categories) =>
         categories.reduce((acc, category) => acc + parseInt(category.amount), 0);
 
@@ -58,6 +63,61 @@ const SummaryPage = () => {
                     ))}
                 </div>
             </div>
+            {/* Monthly Expense Limit  */}
+            <div className={styles.summaryPage}>
+                <h1 className={styles.title}>Monthly Expense Limit</h1>
+                <div className={styles.summaryContainer}>
+                    {
+                        monthlyExpensesLimit?.expenses?.map(data => <div key={data._id} className={styles.daySummary}>
+                            <h2 className={styles.date}>{data?.date}</h2>
+                            <div className={styles.categories}>
+                                <div className={styles.category}>
+                                    <span className={styles.categoryName}>
+                                        Groceries
+                                    </span>
+                                    <span className={styles.categoryTotal}>
+                                        ${data?.Groceries}
+                                    </span>
+                                    <span className={styles.categoryName}>
+                                        Transportation
+                                    </span>
+                                    <span className={styles.categoryTotal}>
+                                        ${data?.Transportation}
+                                    </span>
+                                    <span className={styles.categoryName}>
+                                        Healthcare
+                                    </span>
+                                    <span className={styles.categoryTotal}>
+                                        ${data?.Healthcare}
+                                    </span>
+                                    <span className={styles.categoryName}>
+                                        Utility
+                                    </span>
+                                    <span className={styles.categoryTotal}>
+                                        ${data?.Utility}
+                                    </span>
+                                    <span className={styles.categoryName}>
+                                        Charity
+                                    </span>
+                                    <span className={styles.categoryTotal}>
+                                        ${data?.Charity}
+                                    </span>
+                                    <span className={styles.categoryName}>
+                                        Miscellaneous
+                                    </span>
+                                    <span className={styles.categoryTotal}>
+                                        ${data?.Miscellaneous}
+                                    </span>
+                                </div>
+                            </div>
+                            <div className={styles.dailyTotal}>
+                                Total: $500
+                            </div>
+                        </div>)
+                    }
+                </div>
+            </div>
+
         </div>
     );
 };

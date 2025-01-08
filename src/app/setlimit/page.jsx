@@ -4,13 +4,17 @@ import { useState } from 'react';
 import styles from '@/assets/styles/setlimit.module.css';
 import { useSession } from "next-auth/react"
 import { redirect } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { postExpensesLimit } from "@/lib/features/expensesLimit/postExpensesLimitSlice";
 
 const SetExpensesLimit = () => {
+    const [updateMsg, setUpdateMsg] = useState("");
     const { data: session } = useSession();
     // User Not Exist
     if (session == null) {
         redirect("/")
     }
+    const dispatch = useDispatch();
 
     const [limits, setLimits] = useState({
         Groceries: 0,
@@ -30,8 +34,26 @@ const SetExpensesLimit = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Limits set:', limits);
-        alert('Spending limits have been saved successfully!');
+        const email = session?.user?.email;
+        const dateOb = new Date();
+        const date = `${(String(dateOb.getDate()).padStart(2, "0"))}/${(String(dateOb.getMonth() + 1).padStart(2, "0"))}/${dateOb.getFullYear()}`;
+        const body = {
+            date,
+            email,
+            ...limits,
+        }
+        dispatch(postExpensesLimit(body))
+            .then(() => {
+                setUpdateMsg("Expenses Limit Inserted!");
+                setLimits({
+                    Groceries: 0,
+                    Transportation: 0,
+                    Healthcare: 0,
+                    Utility: 0,
+                    Charity: 0,
+                    Miscellaneous: 0,
+                })
+            })
     };
 
     return (
@@ -39,6 +61,7 @@ const SetExpensesLimit = () => {
             <Header />
             <div className={styles.limitPage}>
                 <h1 className={styles.title}>Set Monthly Spending Limits</h1>
+                <div className={styles.updateMsg}>{updateMsg && updateMsg}</div>
                 <form className={styles.form} onSubmit={handleSubmit}>
                     {Object.keys(limits).map((category) => (
                         <div key={category} className={styles.inputGroup}>
