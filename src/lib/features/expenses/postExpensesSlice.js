@@ -19,7 +19,7 @@ export const postExpenses = createAsyncThunk("expenses/postExpenses", async (dat
     return result;
 })
 
-const expenses = createSlice({
+const postExpensesSlice = createSlice({
     name: "expenses",
     initialState,
     extraReducers: (builder) => {
@@ -45,4 +45,4 @@ const expenses = createSlice({
 
 })
 
-export default expenses.reducer;
+export default postExpensesSlice.reducer;

@@ -5,7 +5,7 @@ import styles from '@/assets/styles/summary.module.css';
 import { useSession } from "next-auth/react"
 import { redirect } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "@/lib/features/addUser/addUserSlice";
+import { getExpenses } from "@/lib/features/expenses/getExpensesSlice";
 
 const SummaryPage = () => {
     const { data: session } = useSession();
@@ -15,34 +15,16 @@ const SummaryPage = () => {
     }
 
     // Get Data using Redux 
-    const users = useSelector(state => state?.users);
+    const monthlyExpenses = useSelector(state => state?.expensesData);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getUsers())
+        dispatch(getExpenses())
     }, [dispatch])
-    console.log(users?.users)
 
-    const [expenses, setExpenses] = useState([
-        {
-            date: '2025-01-01',
-            categories: [
-                { name: 'Groceries', total: 100, details: 'Groceries for the week' },
-                { name: 'Transportation', total: 50, details: 'Bus fare' },
-                { name: 'Healthcare', total: 30, details: 'Pharmacy' },
-            ],
-        },
-        {
-            date: '2025-01-02',
-            categories: [
-                { name: 'Utility', total: 80, details: 'Electricity bill' },
-                { name: 'Charity', total: 20, details: 'Donation' },
-                { name: 'Miscellaneous', total: 40, details: 'Books' },
-            ],
-        },
-    ]);
+    console.log(monthlyExpenses?.expenses)
 
     const calculateDailyTotal = (categories) =>
-        categories.reduce((acc, category) => acc + category.total, 0);
+        categories.reduce((acc, category) => acc + parseInt(category.amount), 0);
 
     return (
         <div>
@@ -50,28 +32,28 @@ const SummaryPage = () => {
             <div className={styles.summaryPage}>
                 <h1 className={styles.title}>Daily Expense Summary</h1>
                 <div className={styles.summaryContainer}>
-                    {expenses.map((day, index) => (
+                    {monthlyExpenses?.expenses.map((day, index) => (
                         <div key={index} className={styles.daySummary}>
-                            <h2 className={styles.date}>{day.date}</h2>
+                            <h2 className={styles.date}>{day?.date}</h2>
                             <div className={styles.categories}>
-                                {day.categories.map((category, idx) => (
+                                {day.details.map((category, idx) => (
                                     <div key={idx} className={styles.category}>
                                         <div
                                             className={styles.tooltip}
-                                            data-tooltip={category.details}
+                                            data-tooltip={category?.purpose}
                                         >
                                             <span className={styles.categoryName}>
-                                                {category.name}:
+                                                {category?.category}:
                                             </span>
                                             <span className={styles.categoryTotal}>
-                                                ${category.total}
+                                                ${category?.amount}
                                             </span>
                                         </div>
                                     </div>
                                 ))}
                             </div>
                             <div className={styles.dailyTotal}>
-                                Total: ${calculateDailyTotal(day.categories)}
+                                Total: ${calculateDailyTotal(day?.details)}
                             </div>
                         </div>
                     ))}

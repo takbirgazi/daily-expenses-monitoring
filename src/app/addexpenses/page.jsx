@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react"
 import { redirect } from "next/navigation";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { postExpenses } from "@/lib/features/expenses/expensesSlice";
+import { postExpenses } from "@/lib/features/expenses/postExpensesSlice";
 
 const AddExpensesPage = () => {
     const [updateMsg, setUpdateMsg] = useState("");
