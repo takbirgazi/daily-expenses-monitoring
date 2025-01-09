@@ -1,11 +1,12 @@
 "use client"
 import Header from "@/components/Header/Header";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from '@/assets/styles/setlimit.module.css';
 import { useSession } from "next-auth/react"
 import { redirect } from "next/navigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postExpensesLimit } from "@/lib/features/expensesLimit/postExpensesLimitSlice";
+import { getExpensesLimit } from "@/lib/features/expensesLimit/getExpensesLimitSlice";
 
 const SetExpensesLimit = () => {
     const [updateMsg, setUpdateMsg] = useState("");
@@ -14,7 +15,12 @@ const SetExpensesLimit = () => {
     if (session == null) {
         redirect("/")
     }
+    const monthlyExpensesLimit = useSelector(state => state?.ExpensesLimitData);
     const dispatch = useDispatch();
+    // console.log(monthlyExpensesLimit)
+    useEffect(() => {
+        dispatch(getExpensesLimit(session?.user?.email));
+    }, [dispatch])
 
     const [limits, setLimits] = useState({
         Groceries: 0,
@@ -35,8 +41,20 @@ const SetExpensesLimit = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const email = session?.user?.email;
+        // If all value are 0
+        if (limits.Charity === 0 && limits.Groceries === 0 && limits.Healthcare === 0 && limits.Miscellaneous === 0 && limits.Transportation === 0 && limits.Utility === 0) {
+            setUpdateMsg("Please Input an amount");
+            return
+        }
+        
+        const dbDate = monthlyExpensesLimit?.expenses?.date;
         const dateOb = new Date();
         const date = `${(String(dateOb.getDate()).padStart(2, "0"))}/${(String(dateOb.getMonth() + 1).padStart(2, "0"))}/${dateOb.getFullYear()}`;
+        // if today inserted data already 
+        if (dbDate === date) {
+            setUpdateMsg("Your Already Inserted Data today");
+            return
+        }
         const body = {
             date,
             email,

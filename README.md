@@ -94,17 +94,6 @@ Daily Expenses Monitoring is a web application that helps users input, manage, a
 
 ### Base URL: `http://localhost:3000/api`
 
-#### Expense Management
-
-| Method | Endpoint         | Description                 |
-|--------|------------------|-----------------------------|
-| POST   | `/tasks`         | Add a new expense.          |
-| GET    | `/tasks`         | Retrieve all expenses.      |
-| PUT    | `/tasks/:email`     | Update an existing expense. |
-| DELETE | `/tasks/:email`     | Delete an expense.          |
- 
----
-
 ## Contributing
 We welcome contributions to improve this project. Please follow the steps below:
 1. Fork the repository.
