@@ -31,6 +31,11 @@
     margin-bottom: 1rem;
 }
 
+.limitMsg {
+    font-size: 14;
+    color: red;
+}
+
 .categories {
     display: flex;
     flex-wrap: wrap;
@@ -61,12 +66,14 @@
 }
 
 /* Tooltip Styles */
-.tooltip {
+.tooltip,
+.tooltip2 {
     position: relative;
     cursor: pointer;
 }
 
-.tooltip:hover::after {
+.tooltip:hover::after,
+.tooltip2:hover::after {
     content: attr(data-tooltip);
     position: absolute;
     bottom: 125%;
@@ -81,6 +88,22 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.tooltip2:hover::after {
+    left: -30%;
+}
+
+.tooltip2[data-tooltip]:hover::after {
+    visibility: visible;
+    /* Visible only when data-tooltip exists */
+    opacity: 1;
+    /* Fully visible */
+}
+
+.tooltip2:not([data-tooltip])::after {
+    display: none;
+    /* Hide the pseudo-element if data-tooltip is not present */
+}
+
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .title {
@@ -93,9 +116,13 @@
 
     .categories {
         flex-direction: column;
+
     }
 
     .dailyTotal {
         font-size: 1rem;
+        text-align: center;
+        padding-top: 15px;
+        border-top: 1px solid #27587b2b;
     }
 }

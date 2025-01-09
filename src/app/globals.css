@@ -12,3 +12,7 @@ body {
   background: white;
   color: #1c1c1d;
 }
+
+.dailyTotalOverLimit {
+  color: red;
+}

@@ -40,8 +40,12 @@ const SetExpensesLimit = () => {
         const body = {
             date,
             email,
-            ...limits,
+            limitsCat: Object.entries(limits).map(([category, amount]) => ({
+                category,
+                amount
+            })),
         }
+
         dispatch(postExpensesLimit(body))
             .then(() => {
                 setUpdateMsg("Expenses Limit Inserted!");
