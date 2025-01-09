@@ -107,4 +107,4 @@ We welcome contributions to improve this project. Please follow the steps below:
 For any questions or support, feel free to reach out to the project maintainer:
 - **Name**: Md. Takbir Gazi
 - **Email**: takbirgazibd@gmail.com
-- **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/takbirgazi)
+- **LinkedIn**: [Md. Takbir Gazi](https://linkedin.com/in/takbirgazi)
