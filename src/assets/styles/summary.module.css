@@ -25,10 +25,15 @@
     border: 1px solid #27587b2b;
 }
 
-.date {
-    font-size: 1.5rem;
-    color: #0077cc;
+.dateDiv {
+    padding: 10px 0px;
     margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.date {
+    color: #0077cc;
 }
 
 .limitMsg {
@@ -108,6 +113,10 @@
 @media (max-width: 768px) {
     .title {
         font-size: 1.8rem;
+    }
+
+    .dateDiv {
+        font-size: 1rem;
     }
 
     .date {

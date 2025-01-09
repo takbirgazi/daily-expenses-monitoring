@@ -20,7 +20,9 @@ export default function Home() {
           Stay in control of your spending with our simple and efficient expense
           tracking app.
         </p>
-        <button onClick={() => signIn('google')} className={styles.ctaButton}> Get Started</button>
+        <span className={styles.tooltip} data-tooltip="Join With Google">
+          <button onClick={() => signIn('google')} className={styles.ctaButton}> Get Started</button>
+        </span>
       </section>
 
       <section id="features" className={styles.features}>

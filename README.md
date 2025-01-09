@@ -73,10 +73,10 @@ Daily Expenses Monitoring is a web application that helps users input, manage, a
    - Add the following environment variables:
      ```env
      PORT=3000
-     MONGO_URI=
-     GOOGLE_CLIENT_ID=
-     GOOGLE_CLIENT_SECRET=
-     NEXTAUTH_SECRET=
+     MONGODB_URL= //Your MongoDB URL
+     GOOGLE_CLIENT_ID= // Your Google Client Id for Next Auth
+     GOOGLE_CLIENT_SECRET= // Your Google Client Secret for Next Auth
+     NEXTAUTH_SECRET= // Make a Secret for Vercel Like 97673985ed3fa4172f8233324bc31c549b1da26534f93335ba67a22e999314bf
      ```
 
 4. **Run the Application**:

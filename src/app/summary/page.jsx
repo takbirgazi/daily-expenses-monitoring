@@ -90,7 +90,7 @@ const SummaryPage = () => {
                 <div className={styles.summaryContainer}>
                     {monthlyExpensesLimit?.expenses?.limitsCat?.length <= 0 && <strong>No Data Found</strong>}
                     <div className={styles.daySummary}>
-                        <h2 className={styles.date}>{monthlyExpensesLimit?.expenses?.date}</h2>
+                        <h4 className={styles.dateDiv}>You have set your expense limit for this month from <span className={styles.date}>{monthlyExpensesLimit?.expenses?.date}</span></h4>
                         <div className={styles.categories}>
                             {
                                 monthlyExpensesLimit?.expenses?.limitsCat?.map((cat, ind) => <div key={ind} className={styles.category}>
@@ -104,7 +104,7 @@ const SummaryPage = () => {
                             }
                         </div>
                         <div className={styles.dailyTotal}>
-                            Total: $<span ref={monthTotalRef}> {expLimit}</span>
+                            Total: $ <span ref={monthTotalRef}> {expLimit}</span>
                         </div>
                     </div>
 

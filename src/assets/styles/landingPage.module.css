@@ -20,6 +20,27 @@
     margin-bottom: 1.5rem;
 }
 
+/* Tooltip Styles */
+.tooltip {
+    position: relative;
+    cursor: pointer;
+}
+
+.tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 150%;
+    left: 150%;
+    transform: translateX(-50%);
+    background-color: #0077cc;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .ctaButton {
     padding: 0.8rem 2rem;
     background-color: #1c1c1d;

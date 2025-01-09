@@ -51,7 +51,7 @@ const SetExpensesLimit = () => {
         const date = `${(String(dateOb.getDate()).padStart(2, "0"))}/${(String(dateOb.getMonth() + 1).padStart(2, "0"))}/${dateOb.getFullYear()}`;
         // if today inserted data already 
         if (dbDate === date) {
-            setUpdateMsg("You have already inserted today's data.");
+            setUpdateMsg("You have already inserted today. Please try again tomorrow!");
             return
         }
         const body = {
