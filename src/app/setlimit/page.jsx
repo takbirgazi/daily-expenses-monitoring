@@ -17,7 +17,6 @@ const SetExpensesLimit = () => {
     }
     const monthlyExpensesLimit = useSelector(state => state?.ExpensesLimitData);
     const dispatch = useDispatch();
-    // console.log(monthlyExpensesLimit)
     useEffect(() => {
         dispatch(getExpensesLimit(session?.user?.email));
     }, [dispatch])
@@ -46,13 +45,13 @@ const SetExpensesLimit = () => {
             setUpdateMsg("Please Input an amount");
             return
         }
-        
+
         const dbDate = monthlyExpensesLimit?.expenses?.date;
         const dateOb = new Date();
         const date = `${(String(dateOb.getDate()).padStart(2, "0"))}/${(String(dateOb.getMonth() + 1).padStart(2, "0"))}/${dateOb.getFullYear()}`;
         // if today inserted data already 
         if (dbDate === date) {
-            setUpdateMsg("Your Already Inserted Data today");
+            setUpdateMsg("You have already inserted today's data.");
             return
         }
         const body = {

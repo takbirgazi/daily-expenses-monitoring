@@ -9,7 +9,6 @@ const initialState = {
 
 export const getExpensesLimit = createAsyncThunk("expensesLimit/getExpensesLimit", async (email) => {
     const posted = await fetch(`/api/expenses_limit?email=${encodeURIComponent(email)}`)
-    // const posted = await fetch(`/api/expenses_limit`)
     const result = posted.json();
     return result;
 })
